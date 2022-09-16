@@ -1,0 +1,25 @@
+@use "variable" as *;
+
+button {
+  width: 143px;
+  height: 40px;
+  font-size: 15px;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $grey;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 21px;
+  svg {
+    height: 24px;
+  }
+}
+
+button:hover {
+  background: rgba(217, 217, 217, 0.28);
+}

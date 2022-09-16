@@ -1,0 +1,157 @@
+@use "variable" as *;
+
+svg {
+  height: 24px;
+  margin: 5px 10px;
+  //   margin-right: auto;
+  cursor: pointer;
+  color: $white;
+}
+
+hr {
+  background: $grey;
+  border: solid 1.5px $grey;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0px 100px;
+  //   margin: auto;
+  .square {
+    // margin: 5px;
+    height: 30px;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0.03em;
+
+    color: #2c8ac6;
+  }
+  h3 {
+    font-size: 17px;
+    line-height: 21px;
+
+    color: $white;
+  }
+
+  .search-engine {
+    width: 350px;
+    height: 40px;
+    // margin: 0px;
+
+    background: $grey;
+    border-radius: 7px;
+    input {
+      border: none;
+      outline: none;
+      width: 300px;
+      font-family: inter;
+      font-size: 17px;
+      color: $white;
+      background: $grey;
+    }
+  }
+  div {
+    display: flex;
+    align-items: center;
+
+    margin: auto;
+    .icon {
+      height: 48px;
+    }
+  }
+  .mode {
+    .ms {
+      margin: 5px;
+      //   background-color: #2c8ac6;
+    }
+
+    hr {
+      height: 28px;
+      width: 3.2px;
+      margin: 0px;
+      padding: 0px;
+      //   outline: 1px solid $white;
+      background: $white;
+      border-radius: 2px;
+    }
+  }
+  .about {
+    margin-right: 10px;
+    .user {
+      height: 30px;
+    }
+    .arrow-d {
+      color: #2c8ac6;
+    }
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .navbar {
+    .mode {
+      display: none;
+    }
+    // background-color: yellowgreen;
+  }
+}
+@media screen and (max-width: 960px) {
+  .navbar {
+    .square {
+      display: none;
+    }
+    margin: auto;
+    // background-color: yellowgreen;
+  }
+}
+@media screen and (max-width: 750px) {
+  .navbar {
+    .search-engine {
+      width: fit-content;
+
+      // margin: 0px;
+
+      input {
+        width: 203px;
+        // min-width: auto;
+      }
+      .mic {
+        display: none;
+      }
+    }
+    margin: auto;
+    // background-color: yellowgreen;
+  }
+}
+@media screen and (max-width: 620px) {
+  .navbar {
+    h1 {
+      display: none;
+    }
+    h3 {
+      display: none;
+    }
+    svg {
+      margin: 5px;
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  .navbar {
+    .search-engine {
+      width: fit-content;
+
+      // margin: 0px;
+
+      input {
+        width: 120px;
+        // min-width: auto;
+      }
+    }
+  }
+}

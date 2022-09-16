@@ -1,0 +1,64 @@
+@use "variable" as *;
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: inter;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: $bg;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  display: flex;
+  // flex-direction: row;
+  // flex-wrap: nowrap;
+  // justify-content: center;
+  // background-color: yellow;
+  overflow-x: auto;
+  padding: 10px;
+  padding-left: 50px;
+  // margin-left: 100px;
+  // min-width: 100%;
+  // max-width: 1000px;
+  // min-width: 1000px;
+  min-width: 200px;
+  // height: 500px;
+  // white-space: nowrap;
+  // min-width: 300px;
+  // aspect-ratio: none;
+  .todo {
+    // background-color: blue;
+
+    // max-height: 500px;
+
+    // min-height: 500px;
+    width: 300px;
+    // max-width: 300px;
+    margin: 5px;
+    // div {
+    //   width: 200px;
+    //   height: 50px;
+    //   background-color: aqua;
+    //   margin: 10px 0px;
+    // }
+  }
+}
+@media screen and (min-width: 960px) {
+  .content {
+    justify-content: center;
+    // background-color: yellowgreen;
+  }
+}
+h1 {
+  color: $white;
+}
