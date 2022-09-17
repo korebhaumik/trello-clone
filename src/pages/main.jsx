@@ -2,12 +2,16 @@ import React from "react";
 import List from "./list";
 import data from "../utils/store.js";
 import StoreApi from "../utils/storeApi.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import Navbar from "../components/navbar.js";
 export default function Main() {
   const [list, setList] = useState(data);
   const [cardy, setCardy] = useState(data.todo.cards);
+
+  useEffect(() => {
+    document.title = "Trello";
+  }, []);
 
   const addMoreCard = (title, specific) => {
     const newCard = {
