@@ -247,7 +247,7 @@ textarea::-webkit-scrollbar {
 }
 .modal .m-container .menu {
   position: absolute;
-  top: 230px;
+  top: 195px;
   left: 20px;
 }
 .modal .m-container .cross {
@@ -329,6 +329,9 @@ textarea::-webkit-scrollbar {
     margin: auto;
     margin-top: 50px;
     width: 330px;
+  }
+  .modal .m-container .menu {
+    top: 230px;
   }
   .modal .m-container textarea,
 .modal .m-container textarea:hover,
