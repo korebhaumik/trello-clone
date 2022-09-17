@@ -18,6 +18,30 @@ body {
   padding: 0;
 }
 
+.main {
+  .parent {
+    display: flex;
+    // justify-content: center;
+  }
+  .board-title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 54px;
+    background: rgb(0, 0, 0, 0);
+    // color: $white;
+    color: #278ad1;
+    // color: $white;
+    border: none;
+    outline: none;
+    margin: 20px;
+    margin-left: 25px;
+    width: 330px;
+    // margin-right: 250px;
+  }
+}
+
 .content {
   display: flex;
   // flex-direction: row;
@@ -54,6 +78,13 @@ body {
   }
 }
 @media screen and (min-width: 960px) {
+  .parent {
+    justify-content: center;
+    margin-right: 250px;
+    .board-title {
+      width: auto;
+    }
+  }
   .content {
     justify-content: center;
     // background-color: yellowgreen;

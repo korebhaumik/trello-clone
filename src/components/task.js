@@ -3,22 +3,19 @@ import TextareaAutosize from "react-textarea-autosize";
 import storeApi from "../utils/storeApi";
 import { useContext } from "react";
 
-export default function Task({ setTodo, temp, settemp, setShow, specific }) {
+export default function Task({ temp, setTemp, setShow, specific }) {
   const { addMoreCard } = useContext(storeApi);
   const handleRemove = () => {
     setShow((prev) => !prev);
   };
   const handleChange = (e) => {
-    settemp(e.target.value);
+    setTemp(e.target.value);
   };
   const handleCheck = () => {
     if (temp !== "") {
       addMoreCard(temp, specific);
       setShow((prev) => !prev);
-      setTodo((prev) => {
-        return { ...prev, title: temp };
-      });
-      settemp("");
+      setTemp("");
     }
   };
   return (

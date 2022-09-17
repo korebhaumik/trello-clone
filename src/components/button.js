@@ -1,5 +1,5 @@
 import React from "react";
-import Task from "./task";
+
 export default function Button({ setShow }) {
   const handleAdd = () => {
     setShow((prev) => {
@@ -11,6 +11,7 @@ export default function Button({ setShow }) {
   return (
     <>
       <button onClick={handleAdd}>
+        {/* plus */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

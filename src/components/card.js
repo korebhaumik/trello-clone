@@ -6,10 +6,6 @@ import { motion } from "framer-motion";
 import Modal from "./modal.js";
 
 export default function Card({
-  temp,
-  todo,
-  setTodo,
-  todos,
   cards,
   id,
   specific,
@@ -17,15 +13,11 @@ export default function Card({
   aid,
   color,
   setLastColor,
-  // close,
-  // setClose,
 }) {
   const [close, setClose] = useState(false);
   const { removeCard } = useContext(storeApi);
-  // let color = specific.cards[aid];
 
   const colorShow = () => {
-    // console.log(color);
     return {
       backgroundColor: color,
     };
@@ -35,35 +27,9 @@ export default function Card({
     removeCard(cards.id, specific);
   };
   const handleShow = () => {
-    // if (id===)
-    // console.log(cards.title);
     setClose(true);
   };
-  useEffect(() => {
-    // console.log(color);
-    // console.log(cards.title);
-  });
-  useEffect(() => {
-    // console.log(cards);
-  });
 
-  const colorCheck = () => {
-    if (cards.priority === "mid")
-      return {
-        backgroundColor: "#bdb71d",
-      };
-    else if (cards.priority === "low") {
-      // console.log(true);
-      return {
-        backgroundColor: "#18a24f",
-      };
-    } else if (cards.priority === "high")
-      return {
-        backgroundColor: "#bd1d1d",
-      };
-    else return { background: "rgba(217, 217, 217, 0.04)" };
-    // backgroundColor: "#000000"
-  };
   return (
     <>
       <Draggable draggableId={cards.title} index={index}>

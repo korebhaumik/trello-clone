@@ -1,6 +1,5 @@
 import React from "react";
 import { Stack, TextField } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { useState } from "react";
 import storeApi from "../utils/storeApi";
@@ -11,29 +10,22 @@ export default function MuiDatePicker({ setLastColor, specific, cards, aid }) {
   const [text, setText] = useState(null);
   const { addSubDate } = useContext(storeApi);
 
-  // console.log(value);
-  // console.log(text);
   return (
     <div className="abc">
       <Stack spacing={1} sx={{ width: "110px" }}>
         <MobileDatePicker
           label="Due Date"
           // inputVariant="outlined"
-          disablePast={true}
           // orientation="landscape"
+          disablePast={true}
           value={value}
-          // defaultCalendarMonth={true}
-          // defaultValue={Date.now()}
-          // defaultValue={}
           onChange={(newValue) => {
-            let k = null;
-            k = newValue.$d.toString();
-            // let t = "Wed, 21 Sep";
-            k = `${k.slice(0, 3)}, ${k.slice(4, 11)}`;
+            let temp = null;
+            temp = newValue.$d.toString();
+            temp = `${temp.slice(0, 3)}, ${temp.slice(4, 11)}`;
             setValue(newValue);
-            addSubDate(k, cards, specific, aid);
-            setText(k);
-            // setLastColor(Math.random());
+            addSubDate(temp, cards, specific, aid);
+            setText(temp);
           }}
           renderInput={(params) => (
             <TextField
@@ -43,7 +35,6 @@ export default function MuiDatePicker({ setLastColor, specific, cards, aid }) {
                 input: {
                   color: "#278AD1",
                 },
-                // outlineColor: { color: "rgba(255, 255, 255, 0.77)" },
               }}
             />
           )}
@@ -52,5 +43,3 @@ export default function MuiDatePicker({ setLastColor, specific, cards, aid }) {
     </div>
   );
 }
-
-// sx={{ width: "250px" }}

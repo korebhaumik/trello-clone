@@ -2,6 +2,10 @@ import React from "react";
 import { ReactComponent as Icon } from "../assets/Icon.svg";
 
 export default function Navbar() {
+  const [state, setState] = React.useState(false);
+  const handleRender = () => {
+    setState((prev) => !prev);
+  };
   return (
     <>
       <div className="navbar">
@@ -115,6 +119,7 @@ export default function Navbar() {
             strokeWidth="2"
             stroke="currentColor"
             className="arrow-d"
+            onClick={handleRender}
           >
             <path
               strokeLinecap="round"
@@ -122,6 +127,7 @@ export default function Navbar() {
               d="M19.5 8.25l-7.5 7.5-7.5-7.5"
             />
           </svg>
+          {state && <div className="dropdown">Log Out</div>}
         </div>
       </div>
       <hr />
