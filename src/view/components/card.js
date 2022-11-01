@@ -151,14 +151,14 @@ export default function Card({ card, index, container }) {
         </motion.div>
       </div>
 
-      {close && (
+      {/* {close && (
         <Modal
           setClose={setClose}
           card={card}
           index={index}
           container={container}
         />
-      )}
+      )} */}
     </>
   );
 }
