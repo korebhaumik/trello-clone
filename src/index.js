@@ -1,7 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import rootReducer from "./logic/reducers/rootReducer";
+import App from "./view/App";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import service from "./service/middleware";
 
-import App from "./App";
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: [],
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);

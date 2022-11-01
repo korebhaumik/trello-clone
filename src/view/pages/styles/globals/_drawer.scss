@@ -1,0 +1,83 @@
+@use "variable" as *;
+
+.drawer {
+  position: absolute;
+  width: 400px;
+  height: 100%;
+  left: -1px;
+  top: 0px;
+
+  background: #1f1f1f;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 0px 10px 10px 0px;
+  z-index: 100;
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    hr {
+      //   margin: 10px 0px;
+      width: 250px;
+      height: 3.5px;
+      border-radius: 2px;
+      background-color: $white;
+    }
+    div {
+      background: rgba(9, 9, 10, 0.6);
+      border-radius: 100px;
+      width: 350px;
+      height: 60px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      //   justify-content: flex-start;
+      svg {
+        margin-left: 25px;
+        color: #278ad1;
+        // height: px;
+        // background-color: tomato;
+      }
+      .x {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: rgb(208, 4, 4);
+        justify-self: flex-end;
+      }
+      h2 {
+        font-weight: 500;
+        // background-color: aqua;
+        font-size: 20px;
+        line-height: 30px;
+        color: $white;
+        margin: 0px;
+        margin-left: 20px;
+      }
+    }
+    div:hover {
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      transition: 100ms;
+    }
+  }
+  h1 {
+    font-weight: 500;
+    text-decoration: underline;
+    margin: 20px 20px;
+    margin-top: 50px;
+    // margin-: 70px;
+    font-size: 35px;
+    color: $white;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
