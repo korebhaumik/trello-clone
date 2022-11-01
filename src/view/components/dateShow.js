@@ -24,7 +24,7 @@ export default function MuiDatePicker({ setLastColor, specific, cards, aid }) {
             temp = newValue.$d.toString();
             temp = `${temp.slice(0, 3)}, ${temp.slice(4, 11)}`;
             setValue(newValue);
-            addSubDate(temp, cards, specific, aid);
+            // addSubDate(temp, cards, specific, aid);
             setText(temp);
           }}
           renderInput={(params) => (

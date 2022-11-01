@@ -23,7 +23,7 @@ export default function MuiTimePicker({ setLastColor, specific, cards, aid }) {
             if (newValue.$H >= 12) t = "PM";
             temp = `${temp.slice(16, 21)} ${t}`;
             setValue(newValue);
-            addSubTime(temp, cards, specific, aid);
+            // addSubTime(temp, cards, specific, aid);
             setText(temp);
           }}
           renderInput={(params) => (

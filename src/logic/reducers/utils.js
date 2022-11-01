@@ -180,7 +180,7 @@ export const utilsReducer = (state = {}, actions) => {
           const payload = k[activeIndex];
           // const payload = temp[activeContainer][activeIndex];
           newItems = moveBetweenContainers(
-            itemGroups,
+            temp,
             activeContainer,
             activeIndex,
             overContainer,
