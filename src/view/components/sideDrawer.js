@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import useOnClickOutsideRef from "../hooks/clickOutside";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
@@ -12,7 +12,21 @@ export default function SideDrawer() {
   const dispatch = useDispatch();
   const boardIndex = useSelector((state) => state.boardIndex);
   const allBoards = useSelector((state) => state.allBoards);
+  const showDrawer = useSelector((state) => state.showDrawer);
 
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key == "Escape") {
+        dispatch({ type: "SHOW" });
+        // console.log("yess");
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
   const handleRemove = (id, index, event) => {
     event.stopPropagation();
     dispatch(removeBoard(id, index, allBoards, boardIndex));
