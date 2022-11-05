@@ -51,7 +51,7 @@ export default function SideDrawer() {
         <main>
           {/* Primary Board */}
           <div onClick={() => handleBoardToggle(0)}>
-            {/* cross */}
+            {/* trend */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -100,6 +100,7 @@ export default function SideDrawer() {
                     />
                   </svg>
                   <h2>{board.name || `Board ${index + 1}`}</h2>
+                  {/* cross */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -121,6 +122,24 @@ export default function SideDrawer() {
               );
             }
           })}
+          {/* {cross} */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="exit"
+            onClick={() => {
+              dispatch({ type: "SHOW" });
+            }}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
           <hr />
           <div
             role="button"

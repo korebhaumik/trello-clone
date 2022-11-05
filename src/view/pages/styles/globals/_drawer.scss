@@ -23,6 +23,12 @@
       border-radius: 2px;
       background-color: $white;
     }
+    .exit {
+      position: absolute;
+      height: 30px;
+      top: 52px;
+      right: 6%;
+    }
     div {
       background: rgba(9, 9, 10, 0.6);
       // border-radius: 100px;
@@ -105,4 +111,11 @@
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 500px) {
+  .drawer {
+    width: 100%;
+    border-radius: 0;
+  }
 }
