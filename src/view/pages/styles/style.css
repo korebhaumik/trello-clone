@@ -514,6 +514,25 @@ hr {
   border: solid 1.5px #1f1f1f;
 }
 
+.mobile-search-engine {
+  width: 350px;
+  height: 50px;
+  margin: auto;
+  display: none;
+  align-items: center;
+  background: #1f1f1f;
+  border-radius: 7px;
+}
+.mobile-search-engine input {
+  border: none;
+  outline: none;
+  width: 300px;
+  font-family: inter;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.77);
+  background: #1f1f1f;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -607,7 +626,7 @@ hr {
   .navbar {
     margin: auto;
   }
-  .navbar .square {
+  .navbar .icon {
     display: none;
   }
 }
@@ -628,8 +647,26 @@ hr {
   }
 }
 @media screen and (max-width: 620px) {
-  .navbar h1 {
+  .mobile-search-engine {
+    display: flex;
+  }
+  .navbar div h1 {
+    margin: 0px;
+    text-decoration: underline;
+  }
+  .navbar .square {
+    margin-right: 0px;
+  }
+  .navbar .search-engine {
     display: none;
+    left: 10%;
+  }
+  .navbar .mode {
+    display: inherit;
+    margin-right: 0px;
+  }
+  .navbar .about {
+    margin-left: 5px;
   }
   .navbar h3 {
     display: none;
