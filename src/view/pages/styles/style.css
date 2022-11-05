@@ -134,7 +134,7 @@ button:hover {
   width: 230px;
   height: 58px;
   border-radius: 7px;
-  margin: 10px 0px;
+  margin-bottom: 10px;
   background-color: #1f1f1f;
   height: auto;
   color: rgba(255, 255, 255, 0.77);
@@ -673,14 +673,15 @@ hr {
   align-items: center;
 }
 .drawer main hr {
-  width: 250px;
+  width: 300px;
   height: 3.5px;
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.77);
 }
 .drawer main div {
   background: rgba(9, 9, 10, 0.6);
-  border-radius: 100px;
+  border-radius: 7px;
+  cursor: pointer;
   width: 350px;
   height: 60px;
   margin-bottom: 10px;
@@ -696,8 +697,18 @@ hr {
   position: absolute;
   top: 12px;
   right: 12px;
+  border-radius: 20px;
   color: rgb(208, 4, 4);
-  justify-self: flex-end;
+  z-index: 500;
+}
+.drawer main div .x:hover {
+  background: rgba(208, 4, 4, 0.16);
+}
+.drawer main div .star {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: rgb(223, 187, 9);
 }
 .drawer main div h2 {
   font-weight: 500;
@@ -719,6 +730,13 @@ hr {
   margin-top: 50px;
   font-size: 35px;
   color: rgba(255, 255, 255, 0.77);
+}
+.drawer .new-board-btn {
+  margin-top: 10px;
+  border-radius: 7px;
+  color: rgba(255, 255, 255, 0.77);
+  width: 240px;
+  font-weight: 500;
 }
 
 .overlay {

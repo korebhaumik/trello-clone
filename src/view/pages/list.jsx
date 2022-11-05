@@ -35,7 +35,7 @@ export default function List({ specific }) {
             </div>
           </SortableContext>
           {show && (
-            <Task show={show} setShow={setShow} container={specific.name} />
+            <Task show={show} setShow={setShow} container={specific.id} />
           )}
           <Button setShow={setShow} />
         </div>

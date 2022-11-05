@@ -1,9 +1,10 @@
-export const removeCard = (id, container) => {
-  return { type: "REMOVE_CARD", id, name: container };
+export const removeCard = (id, container, boardIndex) => {
+  return { type: "REMOVE_CARD", boardIndex, id, name: container };
 };
-export const addCard = (title, container) => {
+export const addCard = (title, container, boardIndex) => {
   return {
     type: "ADD_CARD",
+    boardIndex,
     name: container,
     payload: {
       id: Math.random(),

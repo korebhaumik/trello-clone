@@ -1,76 +1,87 @@
 import { moveBetweenContainers, arrayMove, removeAtArray } from "../fnc";
 
-export const utilsReducer = (state = {}, actions) => {
+export const utilsReducer = (state = [], actions) => {
   switch (actions.type) {
     case "GET_DATA": {
       state = actions.payload.value;
       return state;
     }
+    case "SET_DATA": {
+      state = actions.payload.value;
+      return state;
+    }
     case "REMOVE_CARD": {
       const temp = state;
-      const item = temp[actions.name].cards;
+      const transitItem = temp[actions.boardIndex];
+      const item = transitItem[actions.name].cards;
       const cardArr = item.filter((card) => {
         return card.id != actions.id;
       });
 
-      temp[actions.name].cards = cardArr;
+      transitItem[actions.name].cards = cardArr;
 
       state = temp;
-      return {
+      return [...state];
+      return [
         ...state,
-        todo: {
-          ...state.todo,
+        {
+          name: state[actions.boardIndex].name,
+          data: state[actions.boardIndex].data,
         },
-        doing: {
-          ...state.doing,
-        },
-        done: {
-          ...state.done,
-        },
-      };
+        // todo: {
+        //   ...state.todo,
+        // },
+        // doing: {
+        //   ...state.doing,
+        // },
+        // done: {
+        //   ...state.done,
+        // },
+      ];
     }
     case "ADD_CARD": {
       const temp = state;
-      const item = temp[actions.name].cards;
+      const transitItem = temp[actions.boardIndex].data;
+      const item = transitItem[actions.name].cards;
       const cardArr = [...item, actions.payload];
 
-      temp[actions.name].cards = cardArr;
+      console.log("container: ", transitItem[actions.name]);
+      console.log("cardArr: ", cardArr);
+
+      transitItem[actions.name].cards = cardArr;
 
       state = temp;
-      return {
+      return [...state];
+      return [
         ...state,
-        todo: {
-          ...state.todo,
+        {
+          name: state[actions.boardIndex].name,
+          data: state[actions.boardIndex].data,
         },
-        doing: {
-          ...state.doing,
-        },
-        done: {
-          ...state.done,
-        },
-      };
+      ];
+      // return {
+      //   ...state,
+      //   todo: {
+      //     ...state.todo,
+      //   },
+      //   doing: {
+      //     ...state.doing,
+      //   },
+      //   done: {
+      //     ...state.done,
+      //   },
+      // };
     }
     case "DRAG_OVER": {
       const overId = actions.over?.id;
       // console.log(actions.active);
       // console.log(actions.over);
-
-      let temp = state;
+      let transitData = state;
+      let temp = state[actions.boardIndex].data;
       if (overId !== "delete") {
         if (!overId) {
           // console.log("hello");
-          return {
-            ...state,
-            todo: {
-              ...state.todo,
-            },
-            doing: {
-              ...state.doing,
-            },
-            done: {
-              ...state.done,
-            },
-          };
+          return state;
         }
 
         const activeContainer =
@@ -95,7 +106,7 @@ export const utilsReducer = (state = {}, actions) => {
           const k = temp[activeContainer].cards;
           // console.log(k[activeIndex]);
           const payload = k[activeIndex];
-          state = moveBetweenContainers(
+          const data = moveBetweenContainers(
             temp,
             activeContainer,
             activeIndex,
@@ -104,28 +115,21 @@ export const utilsReducer = (state = {}, actions) => {
             payload
           );
 
-          // console.log(state);
-          return {
-            ...state,
-            todo: {
-              ...state.todo,
-            },
-            doing: {
-              ...state.doing,
-            },
-            done: {
-              ...state.done,
-            },
-          };
+          // console.log(data);
+          transitData[actions.boardIndex].data = data;
+          state = transitData;
+          return [...state];
         }
       }
       return state;
     }
+
     case "DRAG_END": {
-      let temp = state;
+      let transitData = state;
+      let temp = state[actions.boardIndex].data;
       if (!actions.over) {
         // setActiveID(null);
-        return state;
+        return { ...state };
       }
       if (actions.over.id == "delete") {
         // setActiveID(null);
@@ -138,13 +142,19 @@ export const utilsReducer = (state = {}, actions) => {
           ...temp,
           [activeContainer]: {
             id: activeContainer,
-            name: activeContainer,
-            title: state[activeContainer].title,
             cards: removeAtArray(temp[activeContainer].cards, activeIndex),
           },
         };
-        state = temp;
-        return state;
+        transitData[actions.boardIndex].data = temp;
+        state = transitData;
+        return [...state];
+        // return [
+        //   ...state,
+        //   {
+        //     name: state[actions.boardIndex].name,
+        //     data: { ...state[actions.boardIndex].data },
+        //   },
+        // ];
       }
       if (actions.active.id !== actions.over.id) {
         const activeContainer =
@@ -161,12 +171,11 @@ export const utilsReducer = (state = {}, actions) => {
 
         let newItems;
         if (activeContainer === overContainer) {
+          // console.log(temp);
           newItems = {
             ...temp,
             [overContainer]: {
               id: overContainer,
-              name: overContainer,
-              title: state[overContainer].title,
               cards: arrayMove(
                 temp[overContainer].cards,
                 activeIndex,
@@ -188,26 +197,72 @@ export const utilsReducer = (state = {}, actions) => {
             payload
           );
         }
-        state = newItems;
-        return state;
+        // state = newItems;
+
+        transitData[actions.boardIndex].data = newItems;
+        // state = transitData;
+        return [...state];
       }
+      return [...state];
+    }
+    case "ADD_NEW_BOARD": {
+      // console.log(skeletonData);
+      state = [
+        ...state,
+        {
+          name: `Board ${actions.payload.value}`,
+          id: Math.random(),
+          data: {
+            Todo: {
+              id: "Todo",
+              cards: [],
+            },
+            Doing: {
+              id: "Doing",
+              cards: [],
+            },
+            Done: {
+              id: "Done",
+              cards: [],
+            },
+          },
+        },
+      ];
+      return state;
+    }
+    case "REMOVE_BOARD": {
+      state = state.filter((board) => {
+        return board.id !== actions.payload.id;
+      });
+      return [...state];
+    }
+    case "UPDATE_BOARD_NAME": {
+      let transitData = state;
+      transitData[actions.payload.index].name = actions.payload.value;
+      return [...transitData];
     }
     default: {
       return state;
     }
   }
 };
-export const cardsReducer = (state = {}, actions) => {
+
+export const boardIndexReducer = (state = 0, actions) => {
   switch (actions.type) {
-    case "SHOW_CURRENT_CARD": {
-      state = actions.payload.card;
+    case "SET_BOARD_INDEX": {
       return state;
     }
+    case "UPDATE_BOARD_INDEX": {
+      state = actions.payload.index;
+      return state;
+    }
+
     default: {
       return state;
     }
   }
 };
+
 export const showReducer = (state = false, actions) => {
   switch (actions.type) {
     case "SHOW": {

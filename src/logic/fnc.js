@@ -26,15 +26,11 @@ export const moveBetweenContainers = (
     ...state,
     [activeContainer]: {
       id: activeContainer,
-      name: activeContainer,
-      title: state[activeContainer].title,
       cards: removeAtArray(state[activeContainer].cards, activeIndex),
     },
 
     [overContainer]: {
       id: overContainer,
-      name: overContainer,
-      title: state[overContainer].title,
       cards: insertAtArray(state[overContainer].cards, overIndex, payload),
     },
   };

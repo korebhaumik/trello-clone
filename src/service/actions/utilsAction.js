@@ -1,11 +1,17 @@
-import data from "../utils/store";
+import transitData from "../utils/store";
 
 export const getData = () => {
   return {
     type: "GET_DATA",
     payload: {
-      value: data,
+      value: transitData,
     },
+  };
+};
+
+export const setBoardIndex = () => {
+  return {
+    type: "SET_BOARD_INDEX",
   };
 };
 

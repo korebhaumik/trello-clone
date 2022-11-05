@@ -1,3 +1,5 @@
+import { updateBoardIndex } from "../logic/actions/listActions";
+
 const catData =
   ({ dispatch, getState }) =>
   (next) =>
@@ -36,5 +38,37 @@ const logger =
     return state;
   };
 
-const service = [catData, logger];
-// export default service;
+const verifier =
+  ({ dispatch, getState }) =>
+  (next) =>
+  (action) => {
+    switch (action.type) {
+      case "REMOVE_BOARD": {
+        const currentIndex = action.payload.currentIndex;
+        const boardIndex = action.payload.boardIndex;
+
+        // console.log(
+        //   "Current Index: ",
+        //   currentIndex,
+        //   "Board Index: ",
+        //   boardIndex
+        // );
+
+        if (currentIndex <= boardIndex) {
+          dispatch(updateBoardIndex(boardIndex - 1));
+          const state = next(action);
+          return state;
+        }
+
+        // const state = next(action);
+        return next(action);
+      }
+
+      default:
+        const state = next(action);
+        return state;
+    }
+  };
+
+const service = [verifier];
+export default service;

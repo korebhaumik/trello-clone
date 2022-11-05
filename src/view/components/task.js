@@ -4,7 +4,9 @@ import { addCard } from "../../logic/actions/cardsAction";
 import TextareaAutosize from "react-textarea-autosize";
 
 export default function Task({ setShow, container }) {
+  // console.log(container);
   const dispatch = useDispatch();
+  const boardIndex = useSelector((state) => state.boardIndex);
   const [temp, setTemp] = useState("");
   const handleRemove = () => {
     setShow((prev) => !prev);
@@ -14,7 +16,7 @@ export default function Task({ setShow, container }) {
   };
   const handleAdd = () => {
     if (temp) {
-      dispatch(addCard(temp, container));
+      dispatch(addCard(temp, container, boardIndex));
       setShow((prev) => !prev);
     }
   };

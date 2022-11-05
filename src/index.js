@@ -8,7 +8,7 @@ import service from "./service/middleware";
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [],
+  middleware: service,
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

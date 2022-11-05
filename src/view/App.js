@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { getData, fetchData } from "../service/actions/utilsAction";
+import { getData, setBoardIndex } from "../service/actions/utilsAction";
 import { useDispatch } from "react-redux";
 import Main from "./pages/main";
 function App() {
@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     document.title = "Trello";
     dispatch(getData());
-    // dispatch(fetchData());
+    dispatch(setBoardIndex());
     setStall(false);
   }, []);
   return (
